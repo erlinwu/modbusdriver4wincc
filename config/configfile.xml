@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>  
+ 
+  <!-- 数据库连接 mysql -->
+  <dbinfo sqlconstr=""/>
+  <!--modbus 通道 -->
+  <modbus>
+      <modbus_set name="test1" type="tcp" modbustype="server">
+        <set responsetime="300" retry="3" modbusid="1"/>
+        <tcp ip="127.0.0.1" port="502"/>
+        <com com="com1" baudrate="9600" databit="8" parity="none" stopbit="1" />
+      </modbus_set>
+      <modbus_set name="test2" type="tcp" modbustype="server">
+        <set responsetime="300" retry="3" modbusid="2"/>
+        <tcp ip="127.0.0.1" port="503"/>
+        <com com="com2" baudrate="9600" databit="8" parity="none" stopbit="1" />
+      </modbus_set>
+  </modbus>
+</root>
