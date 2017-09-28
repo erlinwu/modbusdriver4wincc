@@ -21,16 +21,16 @@
 #include <QObject>
 //QMessageBox
 #include <QMessageBox>
-//
+//数组
 #include <QVariant>
+//自定义类继承QObject 利用qt的特性自动释放资源 不用自己写析构函数
+#include <QObject>
 
-class xmlhelp
+class xmlhelp : public QObject
 {
-
+    Q_OBJECT
 public:
     xmlhelp();
-    //返回配置的结构体数组
-    bool readFile(const QString &fileName);
 
     //modbus 配置
     struct Settings {
@@ -57,28 +57,35 @@ public:
 
     //modbus配置数组 返回给主窗体，开多线程用。
     QVector<Settings> modbus_sets;
-    //mysql连接字符串
+    //mysql连接字符串`
     QString sqlconstr="";
-    //返回配置文件中的连接字符串
-    QString getSqlStr();
-    QVector<Settings> getStructSets();
 
-    QXmlStreamReader reader;//xml流对象
     QXmlQuery xmlquery;//xpath方式
 
     QString xmlfilename;
 
     QString errMsg;//错误信息
 
+    QXmlStreamReader reader_public;//xml流对象
+    QXmlStreamReader reader;//xml流对象
+
+    //返回配置文件中的连接字符串
+    QString getSqlStr();
+    QVector<Settings> getStructSets();
+
+    //返回配置的结构体数组
+    bool readFile(const QString &fileName);
+
 private:
+
     //
-    void readSetElement(QXmlStreamReader &reader,QFile &file,const QString &xmlfilename,QXmlQuery xmlquery);
+    void readSetElement(QXmlStreamReader &reader,const QString &xmlfilename,QXmlQuery &xmlquery);
 
     Settings m_settings;//内部变量
 
     QFile file;
 
-    void skipUnknownElement();
+    void skipUnknownElement(QXmlStreamReader &reader);
 
 
 

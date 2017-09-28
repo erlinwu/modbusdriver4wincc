@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     w.show();
 
     //
-    xmlhelp xmlhelp;
+    //xmlhelp xmlhelp;
 
     return a.exec();
 }

@@ -49,6 +49,7 @@ bool MainWindow::readXMLFile()
     path.replace("/","\\");
     path = path + tr("\\config\\configfile.xml");
 
+
     bool bFlag=xmlModel->readFile(path);
     if (bFlag)
     {

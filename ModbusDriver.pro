@@ -9,6 +9,8 @@ QT       += core gui
 QT += network
 #xml QXmlQuery
 QT += xmlpatterns
+#DOM 方式处理 XML qt4 and qt5
+QT += xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -38,3 +40,6 @@ FORMS +=mainwindow.ui
 
 DISTFILES += \
     config/configfile.xml
+
+#qDebug() 类似于 cout，将后面的字符串打印到标准输出
+QMAKE_CXXFLAGS += -std=c++0x

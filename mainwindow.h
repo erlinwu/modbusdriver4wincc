@@ -50,8 +50,9 @@ protected:
 private:
     void initActions();
     Ui::MainWindow *ui;
-
+    //
     xmlhelp *xmlModel;
+
 
 };
 
